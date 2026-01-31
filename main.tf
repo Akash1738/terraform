@@ -27,7 +27,7 @@ resource "aws_lb" "alb" {
   security_groups    = [aws_security_group.alb_sg.id]
 
   # ✅ provide subnets via variable
-  subnets = subnet-0a4cd3c99bdd9a8ff
+subnets = var.public_subnets
 }
 
 # Target Group
