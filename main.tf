@@ -25,7 +25,7 @@ resource "aws_lb" "alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-
+subnet = subnet-0a4cd3c99bdd9a8ff
 }
 
 # Target Group
