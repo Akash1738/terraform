@@ -1,12 +1,8 @@
-provider "aws" {
-  region = var.region
-}
-
 # Security Group for ALB
 resource "aws_security_group" "alb_sg" {
   name        = "${var.alb_name}-sg"
   description = "Allow HTTP inbound traffic"
-  vpc_id      = var.vpc_id
+  vpc_id      = var.vpc_id   # ✅ use variable
 
   ingress {
     from_port   = 80
@@ -30,8 +26,8 @@ resource "aws_lb" "alb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
 
-  # ✅ You must provide subnets here
-  subnets = var.subnet-0a4cd3c99bdd9a8ff
+  # ✅ provide subnets via variable
+  subnets = var.public_subnets
 }
 
 # Target Group
@@ -39,7 +35,7 @@ resource "aws_lb_target_group" "tg" {
   name     = "${var.alb_name}-tg"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = var.vpc_id
+  vpc_id   = var.vpc_id   # ✅ use variable
 
   health_check {
     path                = "/"
