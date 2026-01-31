@@ -1,20 +1,20 @@
 variable "region" {
-  description = "AWS region"
-  type        = string
-  default     = "ap-south-1"
+  type    = string
+  default = "ap-south-1"
 }
 
 variable "alb_name" {
-  description = "Name of the ALB"
-  type        = string
+  type = string
 }
 
 variable "vpc_id" {
-  description = "VPC ID"
-  type        = string
+  type = string
 }
 
 variable "public_subnets" {
-  description = "List of public subnet IDs"
-  type        = list(string)
+  type = list(string)
+}
+
+variable "private_subnets" {
+  type = list(string)
 }
