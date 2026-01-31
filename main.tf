@@ -1,7 +1,3 @@
-provider "aws" {
-  region = var.region
-}
-
 # Security Group for ALB
 resource "aws_security_group" "alb_sg" {
   name        = "${var.alb_name}-sg"
