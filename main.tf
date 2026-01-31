@@ -3,8 +3,10 @@ resource "aws_security_group" "alb_sg" {
   name        = "${var.alb_name}-sg"
   description = "Allow HTTP inbound traffic"
   vpc_id      = var.vpc_id   # ✅ use variable
+  "Name=vpc-id,Values=vpc-0add612466eab90e5" 
+  "Subnets[*].{ID:SubnetId,AZ:AvailabilityZone}"
 
-  ingress {
+   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
@@ -28,6 +30,7 @@ resource "aws_lb" "alb" {
 
   # ✅ provide subnets via variable
 subnets = var.public_subnets
+subnets = var.private_subnets
 }
 
 # Target Group
