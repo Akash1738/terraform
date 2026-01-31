@@ -21,12 +21,17 @@ resource "aws_security_group" "alb_sg" {
 
 # Application Load Balancer
 resource "aws_lb" "alb" {
-  name               = var.alb_name
+  name               = "my-app-alb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = sg-07be0f8e75416b409
-subnet = subnet-0a4cd3c99bdd9a8ff
+  security_groups    = [aws_security_group.alb_sg.id]
+
+  subnets = [
+    "subnet-031a86e5dd1fd52b5",
+    "subnet-0abcd1234efgh5678"
+  ]
 }
+
 
 # Target Group
 resource "aws_lb_target_group" "tg" {
