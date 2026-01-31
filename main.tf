@@ -1,3 +1,7 @@
+provider "aws" {
+  region = var.region
+}
+
 # Security Group for ALB
 resource "aws_security_group" "alb_sg" {
   name        = "${var.alb_name}-sg"
@@ -26,7 +30,8 @@ resource "aws_lb" "alb" {
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
 
- 
+  # ✅ You must provide subnets here
+  subnets = var.subnet-0a4cd3c99bdd9a8ff
 }
 
 # Target Group
