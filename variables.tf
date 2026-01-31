@@ -5,12 +5,12 @@ variable "region" {
 }
 
 variable "alb_name" {
-  description = "alb"
+  description = "Name of the ALB"
   type        = string
 }
 
 variable "vpc_id" {
-  description = "VPC ID where ALB will be created"
+  description = "VPC ID"
   type        = string
 }
 
@@ -18,4 +18,3 @@ variable "public_subnets" {
   description = "List of public subnet IDs"
   type        = list(string)
 }
-
